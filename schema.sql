@@ -25,3 +25,21 @@ weight_kg DECIMAL NOT NULL,
 neutered BOOLEAN NOT NULL,
 escape_attempts INT NOT NULL);
 
+
+-- DAY 3
+CREATE TABLE owners (
+    id BIGSERIAL PRIMARY KEY NOT NULL,
+    full_name VARCHAR(100),
+    age INT
+);
+
+CREATE TABLE species (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(50)
+);
+
+ALTER TABLE animals DROP COLUMN species;
+
+ALTER TABLE animals ADD COLUMN species_id INT REFERENCES species(id);
+
+ALTER TABLE animals ADD COLUMN owner_id INT REFERENCES owners(id);

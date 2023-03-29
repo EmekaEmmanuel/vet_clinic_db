@@ -291,3 +291,13 @@ JOIN species ON species.id = animals.species_id
 JOIN vets ON vets.id = visits.vets_id
 WHERE vets_id=2
 GROUP BY species.name LIMIT 1;
+
+-- CREATE TABLE animals (
+-- id BIGSERIAL PRIMARY KEY NOT NULL,
+-- name VARCHAR(100) NOT NULL,
+-- species_id INT REFERENCES species(id),
+-- owner_id INT REFERENCES owners(id),
+-- date_of_birth DATE NOT NULL,
+-- weight_kg DECIMAL NOT NULL,
+-- neutered BOOLEAN NOT NULL,
+-- escape_attempts INT NOT NULL);
