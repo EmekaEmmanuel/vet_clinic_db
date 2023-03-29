@@ -1,130 +1,68 @@
-<a name="readme-top"></a>
+/* Database schema to keep the structure of entire database. */
 
-<div align="center">
+/*  DAY 1 */
+CREATE DATABASE vet_clinic
 
-  <h3><b>Vet Clinic project</b></h3>
+/* CREATE ANIMAL TABLE IN DATABASE */
+CREATE TABLE animals (
+    id INT NOT NULL PRIMARY KEY,
+    name varchar(100) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    escape_attempts INT,
+    neutered BOOLEAN,
+    weight_kg DECIMAL NOT NULL 
+);
 
-  ## Database Schema Diagram
+-- DAY 2
+DROP TABLE animals;
 
-    This is the scheme Diagram for the database showing the schema for all the tables in the database.
+CREATE TABLE animals (
+id BIGSERIAL PRIMARY KEY NOT NULL,
+name VARCHAR(100) NOT NULL,
+species VARCHAR(50),
+date_of_birth DATE NOT NULL,
+weight_kg DECIMAL NOT NULL,
+neutered BOOLEAN NOT NULL,
+escape_attempts INT NOT NULL);
 
-    <img src="./img/vet_img.png" alt="schema_img" width="140"  height="auto" >
-    <br/>
 
-</div> 
+-- DAY 3
+CREATE TABLE owners (
+    id BIGSERIAL PRIMARY KEY NOT NULL,
+    full_name VARCHAR(100),
+    age INT
+);
 
-# 📗 Table of Contents
+CREATE TABLE species (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(50)
+);
 
-- [📖 About the Project](#about-project)
-  - [:camera: project screenshot](#screen-shoot)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [📝 License](#license) 
+CREATE TABLE animals (
+id BIGSERIAL PRIMARY KEY NOT NULL,
+name VARCHAR(100) NOT NULL,
+species_id INT REFERENCES species(id),
+owner_id INT REFERENCES owners(id),
+date_of_birth DATE NOT NULL,
+weight_kg DECIMAL NOT NULL,
+neutered BOOLEAN NOT NULL,
+escape_attempts INT NOT NULL);
 
-# 📖 Vet Clinic project <a name="about-project"></a>
+--DAY 4
+CREATE TABLE vets (
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    date_of_graduation DATE
+);
 
-> A relational DB structure for a vet clinic with complete _data about: animals, owners, clinic employees and visits.
+CREATE TABLE specialization(
+    vets_id INT REFERENCES vets(id),
+    species_id INT REFERENCES species(id)
+);
 
-## 🛠 Built With <a name="built-with"> </a>
-
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-  </ul>
-</details>
-
-### Tech Stack <a name="tech-stack"></a>
-
-> PostgreSQL. 
-
-### Key Features <a name="key-features"></a>
-- **[Display data about animals, owners, clinic employees and visits ...]**
-- **[Include queries that make changes in the database  ...]**  
-- **[Use data.sql to populate tables with sample data  ...]**  
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 💻 Getting Started <a name="getting-started"></a>
-
-to run on your localhost clone the project to local folder
-
-> cd vet_clinic_db
-
-## Getting Started
-
-### Setup
-
-> <p> git clone https://github.com/EmekaEmmanuel/vet_clinic_db.git</p>
-> cd vet_clinic_db
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Prerequisites
-
-In order to run this project you only need:
-
-- PostgreSQL
-
-### Install
-
-To install this project in your local machine use
-
-> https://www.postgresql.org/
-
-### Usage
-
-To run the project, execute the PostgresSQL _database command:
-
-> In visual studio code. 
-> In PostgresSQL PGADMIN4. 
-
-## 👥 Authors <a name="authors"></a>
-
-👤 **Emeka Emmanuel Ugboaja**
-
-- GitHub: [EmekaEmmanuel](https://github.com/EmekaEmmanuel)
-- Twitter: [@emekaekeoha](https://twitter.com/emekaekeoha)
-- LinkedIn: [emeka-ugboaja](https://www.linkedin.com/in/emeka-ugboaja) 
-
-## 🔭 Future Features <a name="future-features"></a> 
-- **[Add more tables to database ...]**
-- **[Include more queries that make changes in the database  ...]**  
-
-## 🤝 Contributing <a name="contributing"></a>
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](https://github.com/EmekaEmmanuel/vet_clinic_db/issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p> 
-
-## Show your support
-
-Give a ⭐️ if you like this project!
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p> 
-
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-> I would like to thank Microverse team
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p> 
-
-## 📝 License <a name="license"></a>
-
-This project is [MIT](./LICENSE) licensed.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+CREATE TABLE visits (
+    animals_id INT REFERENCES animals(id),
+    vets_id INT REFERENCES vets(id),
+    date_of_visit DATE
+);
