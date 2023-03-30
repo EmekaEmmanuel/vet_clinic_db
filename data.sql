@@ -69,3 +69,42 @@ WHERE name IN ('Charmander', 'Squirtle', 'Blossom');
 UPDATE animals
 SET owner_id = (SELECT id FROM owners WHERE full_name LIKE 'Dean Winchester') 
 WHERE name IN ('Angemon', 'Boarmon');
+
+-- DAY 4
+
+INSERT INTO specialization (vets_id, species_id)
+VALUES
+    ('1', '1'),
+    ('3', '2'),
+    ('3', '1'),
+    ('4', '2');
+
+INSERT INTO vets (name, age, date_of_graduation)
+VALUES
+    ('Vet William Tatcher', '45', '2020-04-23'),
+    ('Vet Maisy Smith', '26', '2019-01-17'),
+    ('Vet Stephanie Mendez', '64', '1981-05-04'),
+    ('Vet Jack Harkness', '38', '2008-06-08');
+    
+INSERT INTO visits (animals_id, vets_id, date_of_visit)
+VALUES
+    ('4', '1', '2020-05-24'),
+    ('4', '3', '2020-07-22'),
+    ('9', '4',  '2021-02-02'),
+    ('10', '2',  '2020-01-05'),
+    ('10', '2',  '2020-03-08'),
+    ('10', '2',  '2020-05-14'),
+    ('11', '3',  '2021-05-04'),
+    ('12', '4',  '2021-02-24'),
+    ('13', '2',  '2019-12-21'),
+    ('13', '1',  '2020-08-10'),
+    ('13', '2',  '2021-04-07'),
+    ('3', '3',  '2019-09-29'),
+    ('15', '4',  '2020-10-03'),
+    ('15', '4',  '2020-11-04'),
+    ('16', '2',  '2019-01-24'),
+    ('16', '2',  '2019-05-15'),
+    ('16', '2',  '2020-02-27'),
+    ('16', '2',  '2020-08-03'),
+    ('6', '3',  '2020-05-24'),
+    ('6', '1',  '2021-01-11');
