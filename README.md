@@ -110,7 +110,13 @@ Run SQL commands in `schema.sql` and `data.sql`.
 
 - GitHub: [EmekaEmmanuel](https://github.com/EmekaEmmanuel)
 - Twitter: [@emekaekeoha](https://twitter.com/emekaekeoha)
-- LinkedIn: [emeka-ugboaja](https://www.linkedin.com/in/emeka-ugboaja) 
+- LinkedIn: [emeka-ugboaja](https://www.linkedin.com/in/emeka-ugboaja)
+
+👤 **Marko Kermichiev**
+
+ - Github: [@MarkoKermi](https://github.com/MarkoKermi) 
+ - Twitter: [@MarkKerm](https://twitter.com/MarkoKerm) 
+ - LinkedIn: [@omarko-kermichiev](https://www.linkedin.com/in/marko-kermichiev/) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

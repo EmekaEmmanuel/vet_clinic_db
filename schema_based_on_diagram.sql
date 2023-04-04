@@ -41,3 +41,11 @@ CREATE TABLE medical_histories_treatments (
     treatment_id INT REFERENCES treatments(id)
 );
 
+CREATE INDEX treatments_id_idx ON treatments(id);
+CREATE INDEX patients_name_idx ON patients(name);
+CREATE INDEX medical_histories_id_idx ON medical_histories(id);
+CREATE INDEX invoice_items_id_idx ON invoice_items(id);
+CREATE INDEX patients_id_idx ON patients(id);
+CREATE INDEX medical_histories_treatments_medical_history_id_idx ON medical_histories_treatments(medical_history_id);
+CREATE INDEX medical_histories_treatments_treatment_id_idx ON medical_histories_treatments(treatment_id);
+CREATE INDEX invoices_id_idx ON invoices(id);
