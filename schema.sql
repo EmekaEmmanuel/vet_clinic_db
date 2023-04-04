@@ -62,3 +62,27 @@ CREATE TABLE visits (
     vets_id INT REFERENCES vets(id),
     date_of_visit DATE
 );
+
+-- WEEK 2 DAY 1
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+-- INDEXING 
+CREATE INDEX animals_visit_asc ON animals(visit ASC);
+CREATE INDEX animals_visit_desc ON animals(visit DESC);
+
+CREATE INDEX visits_animals_id_asc ON visits (animals_id ASC);
+CREATE INDEX visits_animals_id_desc ON visits (animals_id DESC);
+
+CREATE INDEX visits_vets_id_seek
+    ON visits (vets_id)
+    INCLUDE (id, animals_id, date_of_visit)
+    WHERE (vets_id = 2);
+
+CREATE INDEX owners_email_asc ON owners (email ASC);
+CREATE INDEX owners_email_asc ON owners (email DESC);
+
+
+-- SELECT COUNT(*) FROM visits where animal_id = 4;
+-- SELECT * FROM visits where vet_id = 2;
+-- SELECT * FROM owners where email = 'owner_18327@mail.com';

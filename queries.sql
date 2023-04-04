@@ -147,3 +147,23 @@ LEFT JOIN specialization ON specialization.vets_id = vets.id
 LEFT JOIN visits ON vets.id = visits.vets_id
 LEFT JOIN species ON species.id = specialization.species_id
 GROUP BY vets.name;
+
+
+-- WEEK 2 DAY 1
+-- QUERY 1
+explain analyze SELECT COUNT(*) FROM visits where animal_id = 4;
+
+-- Run indexing
+explain analyze SELECT COUNT(*) FROM visits where animal_id = 4;
+
+-- QUERY 2
+explain analyze SELECT * FROM visits where vet_id = 2;
+
+-- Run indexing
+explain analyze SELECT COUNT(*) FROM visits where animal_id = 4;
+
+-- QUERY 3
+explain analyze SELECT * FROM owners where email = 'owner_18327@mail.com';
+
+-- Run indexing
+explain analyze SELECT COUNT(*) FROM visits where animal_id = 4;
